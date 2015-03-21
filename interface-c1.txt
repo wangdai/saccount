@@ -1,0 +1,20 @@
+GET /saccount/account?no=I00000001
+如果证券账户号I00000001存在并有效，返回0
+否则返回错误提示
+
+POST /saccount/account
+no: I00000001
+capital: 1234567
+为证券账户号I00000001添加资金账户1234567
+成功返回0
+
+GET /saccount/stock?account_no=I00000001
+如果证券账户I00000001有持有股票，则返回持有股票信息，格式为json
+如证券账户I00000001不存在或没有持有股票，返回null
+
+POST /saccount/stock
+account_no: I00000001
+stock_code: sh600016
+stock_amount: 1000
+为证券账户I00000001添加股票记录，如果该账户已持有该股票，则更新原有记录
+成功返回0

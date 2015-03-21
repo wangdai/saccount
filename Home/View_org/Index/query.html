@@ -1,0 +1,37 @@
+<if condition="$type eq 0">
+	<table>
+		<tr>
+			<th>个人账户号</th>
+			<th>姓名</th>
+			<th>身份证号</th>
+			<th>账户状态</th>
+		</tr>
+		<volist name="list" id="vo">
+		<tr>
+			<td><a href="?p=detail&code={$vo.no}">{$vo.no}</a></td>
+			<td>{$vo.name}</td>
+			<td>{$vo.id_no}</td>
+			<td><?php echo $vo["status"]?"挂失":"正常";?></td>
+		</tr>
+		</volist>
+	</table>
+<elseif condition="$type eq 1"/>
+	<table>
+		<tr>
+			<th>法人账户号</th>
+			<th>法人注册号</th>
+			<th>法人姓名</th>
+			<th>法人身份证号</th>
+			<th>账户状态</th>
+		</tr>
+		<volist name="list" id="vo">
+		<tr>
+			<td><a href="?p=detail&code={$vo.no}">{$vo.no}</a></td>
+			<td>{$vo.legal_registration_no}</td>
+			<td>{$vo.legal_name}</td>
+			<td>{$vo.legal_id}</td>
+			<td><?php echo $vo["status"]?"挂失":"正常";?></td>
+		</tr>
+		</volist>
+	</table>
+</if>

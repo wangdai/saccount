@@ -1,0 +1,96 @@
+<if condition="$type eq 0">
+	<table>
+		<tr>
+			<th>字段</th>
+			<th>值</th>
+		</tr>
+		<tr>
+			<td>个人账户号</td>
+			<td>{$data.no}</td>
+		</tr>
+		<tr>
+			<td>创建时间</td>
+			<td>{$data.create_time}</td>
+		</tr>
+		<tr>
+			<td>姓名</td>
+			<td>{$data.name}</td>
+		</tr>
+		<tr>
+			<td>性别</td>
+			<td>{$data.gender}</td>
+		</tr>
+		<tr>
+			<td>身份证号</td>
+			<td>{$data.id_no}</td>
+		</tr>
+		<tr>
+			<td>手机号</td>
+			<td>{$data.mobile}</td>
+		</tr>
+		<tr>
+			<td>家庭地址</td>
+			<td>{$data.address}</td>
+		</tr>
+		<tr>
+			<td>职业</td>
+			<td>{$data.occupation}</td>
+		</tr>
+		<tr>
+			<td>单位</td>
+			<td>{$data.company}</td>
+		</tr>
+		<tr>
+			<td>教育程度</td>
+			<td>{$data.education}</td>
+		</tr>
+		<tr>
+			<td>代办人身份证号</td>
+			<td>{$data.agent_id_no}</td>
+		</tr>
+		<tr>
+			<td>状态</td>
+			<td><?php echo $data["status"]?"挂失":"正常";?></td>
+		</tr>
+	</table>
+<elseif condition="$type eq 1"/>
+	<table>
+		<tr>
+			<th>字段</th>
+			<th>值</th>
+		</tr>
+		<tr>
+			<td>法人账户号</td>
+			<td>{$data.no}</td>
+		</tr>
+		<tr>
+			<td>创建时间</td>
+			<td>{$data.create_time}</td>
+		</tr>
+	</table>
+</if>
+
+<form method="post" action="{$del_url}">
+	<input name="type" value="{$type}" hidden>
+	<input name="no" value="{$data.no}" hidden>
+	<input type="submit" value="销户">
+</form>
+
+<if condition="$data.status eq 0">
+	<form method="post" action="{$lost_url}">
+		<input name="type" value="{$type}" hidden>
+		<input name="no" value="{$data.no}" hidden>
+		<input type="submit" value="挂失">
+	</form>
+<elseif condition="$data.status eq 1"/>
+	<form method="post" action="{$nolost_url}">
+		<input name="type" value="{$type}" hidden>
+		<input name="no" value="{$data.no}" hidden>
+		<input type="submit" value="解挂">
+	</form>
+	<form method="post" action="{$recreate_url}">
+		<input name="type" value="{$type}" hidden>
+		<input name="no" value="{$data.no}" hidden>
+		<input type="submit" value="重新办理">
+	</form>
+</if>

@@ -1,0 +1,300 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Stock Trade System--Administor</title>
+
+  <!-- Bootstrap -->
+<!-- 	<link class="bootstrap library" rel="stylesheet" type="text/css" href="http://sandbox.runjs.cn/js/sandbox/bootstrap-2.2.0/css/bootstrap.min.css">
+	<script class="bootstrap library" src="http://sandbox.runjs.cn/js/sandbox/jquery/jquery-1.7.2.min.js" type="text/javascript"></script>
+	<script class="bootstrap library" src="http://sandbox.runjs.cn/js/sandbox/bootstrap-2.2.0/js/bootstrap.min.js" type="text/javascript"></script> -->
+
+	<script class="bootstrap library" src="http://sandbox.runjs.cn/js/sandbox/jquery/jquery-1.7.2.min.js" type="text/javascript"></script>
+	<script class="bootstrap library" src="http://sandbox.runjs.cn/js/sandbox/bootstrap-2.2.0/js/bootstrap.min.js" type="text/javascript"></script>
+      <!-- Flat UI -->
+    <meta name="description" content="Flat UI Kit Free is a Twitter Bootstrap Framework design and Theme, this responsive framework includes a PSD and HTML version."/>
+
+    <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
+
+    <!-- Loading Bootstrap -->
+    <link href="Home/View/FlatUI/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Loading Flat UI -->
+    <link href="Home/View/FlatUI/css/flat-ui.css" rel="stylesheet">
+    <link href="Home/View/FlatUI/css/demo.css" rel="stylesheet">
+	
+	<!-- Custom styles for this template -->
+   <link href="../Home/View/customer.css" rel="stylesheet">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+<div class="container">
+		<div class="page-header">
+	<!-- <div class="row"> -->
+		<div class="span4"><h1>股票交易系统</h1></div></div>
+		<div class="span8"><p class="pull-right">
+		<!-- <input type="text" class="form-control" placeholder={$user} /> -->
+		<button class="btn btn-inverse"  disabled="disabled" color="black">{$user}</button>
+		<!-- {$user}  -->
+		<button class="btn btn-info" onclick="window.location.href='{:U('/logout')}'" type="button">注销</button> </p></div>
+		
+	<!-- </div> -->
+	
+	<div class="tabbable tabs-left">
+	<ul class="nav nav-tabs">
+		<li><a href="{:U('/welcome')}">主页</a></li>
+		<li><a href="{:U('/individual/validate')}">创建个人账户</a></li>
+		<li><a href="{:U('/organization/validate')}">创建企业账户</a></li>
+		<li class="active"><a href="{:U('/search')}">搜索账户</a></li>
+	</ul>
+	
+		<div class="tab-pane active" id="tabsearch">
+		<fieldset>
+		
+			<form class="form-horizontal">
+			<legend><font color="DarkSalmon">搜索信息</font></legend>
+			<div name="huge" class="select-block mbl">
+			
+				<label class="control-label" >账户类型</label>
+				<div class="controls">
+					<select id="account_type" >
+						<option value="0">个人账户</option>
+						<option value="1">法人账户</option>
+					</select>
+				</div>
+			</div>
+
+			</form>
+		  	<form method="get" action="{:U('result')}"  class="form-horizontal"  id="form-0">
+		  						
+
+				<input name="type" value="0" class="hide">
+	
+				<div class="form-group">
+					<label class="control-label" >个人账户号</label>
+					<div class="controls">
+						<input class="form-control input-lg" name="no" type="text" placeholder="个人账户号"> 
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" >姓名</label>
+					<div class="controls">
+						<input class="form-control input-lg" name="name" type="text" placeholder="姓名"> 
+					</div>
+				</div>
+				<div class="form-group" id="id_no">
+					<label class="control-label" >身份证号</label>
+					<div class="controls">
+						<input class="form-control input-lg" name="id_no" type="text" placeholder="身份证号">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label">性别</label>
+						<div class="controls">
+					<select name="gender">
+						<option value="">性别...</option>
+						<option value="男">男</option>
+						<option value="女">女</option>
+					</select>
+					</div>
+				</div>
+				<div class="form-group" name="mobile">
+					<label class="control-label" >手机号码</label>
+					<div class="controls">
+						<input class="form-control input-lg" name="mobile" type="text" placeholder="手机号码">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label">教育程度</label>
+					<div class="controls">
+					<select name="education">
+						<option value="">教育背景...</option>
+						<option value="初中及以下">初中及以下</option>
+						<option value="高中">高中</option>
+						<option value="本科">本科</option>
+						<option value="硕士">硕士</option>
+						<option value="博士">博士</option>
+					</select> 
+					</div>
+				</div>
+				<div class="form-group">
+				<div class="controls"style="margin-top: 20px;">
+					<input  type="submit" type="text" class="btn btn-primary" value="查询">
+				</div>
+				</div>
+				
+		  	</form>
+			
+			<form method="get" action="{:U('result')}"  class="form-horizontal"  id="form-1" hidden>
+	
+				<input name="type" value="1" class="hide">
+				
+				<div class="form-group">
+					<label class="control-label" >法人账户号</label>
+					<div class="controls">
+						<input class="form-control input-lg" name="no" type="text" placeholder="法人账户号"> 
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" >法人注册号</label>
+					<div class="controls">
+						<input class="form-control input-lg" name="legal_registration_no" type="text" placeholder="法人注册号"> 
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" >营业执照号</label>
+					<div class="controls">
+						<input class="form-control input-lg" name="business_license_no" type="text" placeholder="营业执照号">
+					</div>
+				</div>
+				<div class="form-group" id="legal_id">
+					<label class="control-label" >法人身份证号</label>
+					<div class="controls">
+						<input class="form-control input-lg" name="legal_id" type="text" placeholder="法人身份证号">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" >法人姓名</label>
+					<div class="controls">
+						<input class="form-control input-lg" name="legal_name" type="text" placeholder="法人姓名">
+					</div>
+				</div>
+				<div class="form-group" id="legal_mobile">
+					<label class="control-label" >法人手机号</label>
+					<div class="controls">
+						<input class="form-control input-lg" name="legal_mobile" type="text" placeholder="法人手机号">
+					</div>
+				</div>
+				<div class="form-group" id="authorizee_id">
+					<label class="control-label" >授权人身份证号</label>
+					<div class="controls">
+						<input class="form-control input-lg" name="authorizee_id" type="text" placeholder="授权人身份证号">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" >授权人姓名</label>
+					<div class="controls">
+						<input class="form-control input-lg" name="authorizee_name" type="text" placeholder="授权人姓名">
+					</div>
+				</div>
+				<div class="form-group" id="authorizee_mobile">
+					<label class="control-label" >授权人手机号</label>
+					<div class="controls">
+						<input class="form-control input-lg" name="authorizee_mobile" type="text" placeholder="授权人手机号">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div style="margin-top: 20px;">
+						<input  type="submit" class="btn btn-primary" value="查询">
+					</div>
+				</div>
+
+		  	</form>
+			
+		</fieldset>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function() {
+		var option = $("#account_type").val();
+		if (option == 0) {
+			$("#form-0").show();
+			$("#form-1").hide();
+		} else {
+			$("#form-0").hide();
+			$("#form-1").show();
+		}
+	});
+	$("#account_type").change(function() {
+		var option = $("#account_type").val();
+		if (option == 0) {
+			$("#form-0").show();
+			$("#form-1").hide();
+		} else {
+			$("#form-0").hide();
+			$("#form-1").show();
+		}
+	});
+	var validatenum = function(a) {
+			console.log(a);
+			var aa= /[0-9]+/;
+			if($.trim($(a +" div input").val()) != "" && !($.trim($(a +" div input").val().match(aa)))){
+				$(a).attr({"class":"form-group error"});
+				$(a + " div span").remove();
+				$(a + " div").append($("<span class=\"help-inline\">Invalid</span>"));
+				return true;
+			}else{
+				$(a).attr({"class":"form-group"});
+				$(a + " div span").remove();
+				return false;
+			}
+		}
+	var validatephone = function(a) {
+			console.log(a);
+			var aa= /([0-9]|-)+/;
+			if($.trim($(a +" div input").val()) != "" && !($.trim($(a +" div input").val().match(aa)))){
+				$(a).attr({"class":"form-group error"});
+				$(a + " div span").remove();
+				$(a + " div").append($("<span class=\"help-inline\">Invalid</span>"));
+				return true;
+			}else{
+				$(a).attr({"class":"form-group success"});
+				$(a + " div span").remove();
+				return false;
+			}
+		}
+	var denyemptyinput = function(a) {
+			console.log(a);
+		//	var aa= /[0-9]+/;
+			if($.trim($(a +" div input").val()) == ""){
+				$(a).attr({"class":"form-group error"});
+				$(a + " div span").remove();
+				$(a + " div").append($("<span class=\"help-inline\">Cannot be empty</span>"));
+				return true;
+			}else{
+				$(a).attr({"class":"form-group success"});
+				$(a + " div span").remove();
+				return false;
+			}
+		}
+	$("#mobile").focusout(function(){validatephone("#mobile")});
+	$("#id_no").focusout(function(){validatenum("#id_no")});
+	
+	$("#legal_id").focusout(function(){validatenum("#legal_id")});
+	$("#namelegal_mobile").focusout(function(){validatephone("#legal_mobile")});
+	$("#authorizee_id").focusout(function(){validatenum("#authorizee_id")});
+	$("#authorizee_mobile").focusout(function(){validatephone("#authorizee_mobile")});
+	
+	$("form").submit(function(e){
+		var option = $("#account_type").val();
+		if (option == 0) {
+			if(validatephone("#mobile"))
+				e.preventDefault();
+			if(validatenum("#id_no"))
+				e.preventDefault();
+			
+		} else {
+			if(validatenum("#legal_id"))
+				e.preventDefault();
+			if(validatephone("#legal_mobile"))
+				e.preventDefault();
+			if(validatenum("#authorizee_id"))
+				e.preventDefault();
+			if(validatephone("#authorizee_mobile"))
+				e.preventDefault();
+			
+		}
+	}		
+	);
+	
+  </script>
+</body>
+</html>

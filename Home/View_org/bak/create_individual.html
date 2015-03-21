@@ -1,0 +1,24 @@
+<h1>{$title}</h1>
+<h2>2:填写个人信息</h2>
+<form method="post" action="{:U('insert')}">
+	<input name="no" value={$no} readonly="true"> <br>
+	<input name="name" value={$name} readonly="true"> <br>
+	<input name="id_no" value={$id_no} readonly="true"> <br>
+	<select name="gender">
+		<option value="男">男</option>
+		<option value="女">女</option>
+	</select> <br>
+	<input name="mobile" placeholder="手机号码"> <br>
+	<input name="address" placeholder="家庭住址"> <br>
+	<input name="occupation" placeholder="工作"> <br>
+	<input name="company" placeholder="单位"> <br>
+	<select name="education">
+		<option value="初中及以下">初中及以下</option>
+		<option value="高中">高中</option>
+		<option value="本科" selected="true">本科</option>
+		<option value="硕士">硕士</option>
+		<option value="博士">博士</option>
+	</select> <br>
+	<input name="agent_id_no" placeholder="代理人身份证号"> <br>
+	<input type="submit" value="提交">
+</form>
